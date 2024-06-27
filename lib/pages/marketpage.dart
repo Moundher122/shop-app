@@ -1,12 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/class.dart';
 import 'package:flutter_application_1/pages/shopingpage.dart';
+import 'package:provider/provider.dart';
 
 import '../components/item.dart';
 class marketpage extends StatefulWidget {
-  List<shoes> item;
-  marketpage({super.key,required this.item});
+  marketpage({super.key});
 
   @override
   State<marketpage> createState() => _marketpageState();
@@ -14,11 +15,6 @@ class marketpage extends StatefulWidget {
 class _marketpageState extends State<marketpage> {
   @override
   Widget build(BuildContext context) {
-    void suppitem(int index){
-      setState(() {
-        item.removeAt(index);
-      });
-    }
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 221, 221, 221),
       body: Column(
@@ -31,10 +27,10 @@ class _marketpageState extends State<marketpage> {
           ),),
           Expanded(
             child: ListView.builder(
-              itemCount: item.length,
+              itemCount: context.watch<listshoes>().items.length,
               itemBuilder:(context, index) {
-                return itempage(shoe: item[index],onTap: () {
-                  suppitem(index);
+                return itempage(shoe:context.watch<listshoes>().items[index],onTap: () {
+                  context.read<listshoes>().suppitem(index);
                 },);
               },),
           ),

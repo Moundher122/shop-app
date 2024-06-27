@@ -50,7 +50,6 @@ class leadingpage extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'supreme',
-                
               ),
               
               )

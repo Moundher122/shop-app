@@ -14,17 +14,6 @@ class shopingpage extends StatefulWidget {
   @override
   State<shopingpage> createState() => _shopingpageState();
 }
-class shoes{
-  String? name;
-  String? description;
-  String? image;
-  String? price;
-  shoes(this.name,this.price,this.image,this.description);
-}
-List<shoes> shoess=[shoes('Nike air force','100','images/force.png',"Nike's lifestyle shoes: premium materials, stylish comfort, perfect for everyday wear"),shoes('Nike air jordan 1', '200', 'images/jordan1.png', "Nike's running shoes: ultimate comfort, advanced cushioning, smooth stride"),shoes('Nike duck Sb', '150','images/airjordan.png' , "Nike's basketball shoes: superior traction, ankle support, peak performance")];
-List<shoes> item=[];
-
-
 class _shopingpageState extends State<shopingpage> {
   int selectedindex=0;
   void change(int index ){
@@ -34,13 +23,8 @@ class _shopingpageState extends State<shopingpage> {
   }
   @override
   Widget build(BuildContext context) {
-    void additem(int p){
-      setState(() {
-        item.add(shoess[p]);
-      });
-    }
-    int index=0;
-    final List<Widget> widgetList = [shoppage(shoe: shoess, item: item),marketpage(item:item,)];
+    
+    final List<Widget> widgetList = [shoppage(),marketpage()];
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 221, 221, 221),
       bottomNavigationBar: navbar(

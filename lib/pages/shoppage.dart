@@ -1,15 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/class.dart';
 import 'package:flutter_application_1/pages/shopingpage.dart';
+import 'package:provider/provider.dart';
 
 import 'shoestile.dart';
 
 
 class shoppage extends StatefulWidget {
-   List<shoes>shoe;
-   List<shoes>item;
-   shoppage({super.key,required this.shoe,required this.item});
+   
+   shoppage({super.key});
   @override
   State<shoppage> createState() => _shoppageState();
 }
@@ -20,12 +21,6 @@ style: TextStyle(
 class _shoppageState extends State<shoppage> {
   @override
   Widget build(BuildContext context) {
-    
-    void additem(int index){
-      setState(() {
-        item.add(widget.shoe[index]);
-      });
-    }
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 221, 221, 221),
       body: Column(
@@ -86,13 +81,13 @@ class _shoppageState extends State<shoppage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: widget.shoe.length,
+              itemCount: listshoes().shoess.length,
               scrollDirection: Axis.horizontal,
               itemBuilder:(context, index) {
                 return shoestile(
-                  shoes: shoes(widget.shoe[index].name,widget.shoe[index].price,widget.shoe[index].image,widget.shoe[index].description,),
+                  shoes:context.watch<listshoes>().shoess[index],
                   onPressed:() {
-                    additem(index);
+                    context.read<listshoes>().additem(index);
                     ScaffoldMessenger.of(context).showSnackBar(_SnackBar);
                    
                   },

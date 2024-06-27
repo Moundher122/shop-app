@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/shopingpage.dart';
+import 'class.dart';
 class itempage extends StatelessWidget {
   final shoes shoe;
   Function()? onTap;
